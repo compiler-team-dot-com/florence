@@ -1,2 +1,2 @@
-# florence
-A 32-bit machine.
+# Florence CPU
+A 32-bit RISC-V machine.

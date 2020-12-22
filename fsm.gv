@@ -1,0 +1,90 @@
+digraph finite_state_machine {
+    rankdir=TB;
+    size="8,5";
+
+    node [shape = box style = rounded];
+
+    18 [label = "MAR <- PC\nPC <- PC + 1\nset ACV\n[INT]"];
+    33 [label = "[ACV]"];
+    28 [label = "MDR <- M"];
+    30 [label = "IR <- MDR"];
+    32 [label = "BEN <- IR[11] & N + IR[10] & Z + IR[9] & P\n[IR[15:12]]"];
+
+    1 [label = "DR <- SR1 + OP2*\nset CC"];
+    5 [label = "DR <- SR1 & OP2*\nset CC"];
+    9 [label = "DR <- NOT(SR)\nset CC"];
+    14 [label = "DR <- PC + off9"];
+    2 [label = "MAR <- PC + off9\nset ACV"];
+    6 [label = "MAR <- B + off6\nset ACV"];
+    10 [label = "MAR <- PC + off9\nset ACV"];
+    11 [label = "MAR <- PC + off9\n set ACV"];
+    17 [label = "[ACV]"];
+    19 [label = "[ACV]"];
+    24 [label = "MDR <- M[MAR]"];
+    29 [label = "MDR <- M[MAR]"];
+    7 [label = "MAR <- B + off6\nset ACV"];
+    0 [label = "[BEN]"];
+    22 [label = "PC <- PC + off9"];
+    12 [label = "PC <- BaseR"];
+    4 [label = "[IR[11]]"];
+    21 [label = "R7 <- PC\nPC <- PC + off11"];
+    20 [label = "R7 <- PC\nPC <- BaseR"];
+    26 [label = "MAR <- MDR\nset ACV"];
+    31 [label = "MAR <- MDR\nset ACV"];
+    3 [label = "MAR <- PC + off9\nset ACV"];
+    35 [label = "[ACV]"];
+    23 [label = "MDR <- SR\n[ACV]"];
+    25 [label = "MDR <- M[MAR]"];
+    16 [label = "M[MAR] <- MDR"];
+    27 [label = "DR <- MDR\nset CC"];
+
+    18 -> 33 [label = "0"];
+    33 -> 28 [label = "0"];
+    28 -> 28 [label = "not R"];
+    28 -> 30 [label = "R"];
+    30 -> 32 [label = ""];
+
+    32 -> 1 [label = "ADD"];
+    32 -> 5 [label = "AND"];
+    32 -> 9 [label = "NOT"];
+    32 -> 14 [label = "LEA"];
+    32 -> 2 [label = "LD"];
+    32 -> 6 [label = "LDR"];
+    32 -> 10 [label = "LDI"];
+    32 -> 11 [label = "STI"];
+    32 -> 7 [label = "STR"];
+    32 -> 3 [label = "ST"];
+    32 -> 0 [label = "BR"];
+    32 -> 12 [label = "JMP"];
+    32 -> 4 [label = "JSR"];
+
+    2 -> 35
+    6 -> 35
+
+    10 -> 17
+    17 -> 24 [label = "0"];
+    24 -> 26 [label = "R"];
+    26 -> 35
+
+    11 -> 19
+    19 -> 29 [label = "0"];
+    29 -> 29 [label = "not R"];
+    29 -> 31 [label = "R"];
+    31 -> 23
+
+    7 -> 23
+    3 -> 23
+
+    23 -> 16 [label = "0"];
+    16 -> 16 [label = "not R"];
+    
+    35 -> 25 [label = "0"];
+    25 -> 25 [label = "not R"];
+    25 -> 27 [label = "R"];
+
+    0 -> 22 [label = "1"];
+    0 -> 18
+    
+    4 -> 21 [label = "1"];
+    4 -> 20 [label = "0"];
+}

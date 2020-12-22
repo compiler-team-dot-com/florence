@@ -10,7 +10,7 @@ module alu #(
 
   always_comb begin
     case (operator_i)
-      1'b0: result_o = operand_a_i + operand_b_i;
+      1'b0: result_o = $unsigned(operand_a_i) + $unsigned(operand_b_i);
       1'b1: result_o = operand_a_i - operand_b_i;
       // default: result_o = operand_a_i + operand_b_i;
     endcase

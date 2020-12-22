@@ -1,22 +1,17 @@
-force operand_a_i 3
-force operand_b_i 2
+dict for {test args} $tests {
+  echo "Running \"$test\""
+  dict with args {
+    force operator_i $op
+    force operand_a_i $a
+    force operand_b_i $b
 
-force operator_i 0
-run 5
+    run 5
 
-if {[examine -decimal result_o] != {8'd5}} {
-  echo "Error: Counting to 8'd5 failed. result_o is [examine -decimal result_o]."
-  quit -code 1
-} else {
-  echo "Test passed. result_o is [examine -decimal result_o]."
-}
-
-force operator_i 1
-run 5
-
-if {[examine -decimal result_o] != {8'd1}} {
-  echo "Error: Counting to 8'd1 failed. result_o is [examine -decimal result_o]."
-  quit -code 1
-} else {
-  echo "Test passed. result_o is [examine -decimal result_o]."
+    if {[examine -unsigned result_o] != $want} {
+      echo "Error: want $want, result_o is [examine -unsigned result_o]."
+      quit -code 1
+    } else {
+      echo "Test passed. result_o is [examine -unsigned result_o]."
+    }
+  }
 }

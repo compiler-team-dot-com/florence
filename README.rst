@@ -6,6 +6,15 @@ Inspired by:
 * `LC-3 <https://www.amazon.com/Introduction-Computing-Systems-Gates-Beyond-ebook/dp/B07VWKMJBX/ref=sr_1_2?dchild=1&keywords=introduction+to+computing+systems&qid=1612820675&sr=8-2>`_
 * https://github.com/lowRISC/ibex
 
+The Florence Core inspires to be a small and efficient, 32-bit, in-order
+RISC-V core with a 2-stage pipeline that implements the RV32IMC instruction
+set architecture.
+
+Documentation
+------------------------
+
+The user manual can be found at `florence-core.readthedocs.io <https://florence-core.readthedocs.io>`_.
+
 Instruction cycle
 -----------------------
 

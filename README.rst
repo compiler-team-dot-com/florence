@@ -3,7 +3,7 @@ Florence Core
 
 Inspired by:
 
-* LC-3
+* `LC-3 <https://www.amazon.com/Introduction-Computing-Systems-Gates-Beyond-ebook/dp/B07VWKMJBX/ref=sr_1_2?dchild=1&keywords=introduction+to+computing+systems&qid=1612820675&sr=8-2>`_
 * https://github.com/lowRISC/ibex
 
 Instruction cycle

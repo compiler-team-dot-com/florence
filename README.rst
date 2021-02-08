@@ -146,23 +146,23 @@ and store the result in the destination register all in a single clock cycle.
 
 From: http://www.sunburst-design.com/papers/
 
-## Test benches
+Test benches
+-----------------
 
 Good coding style for time-0 reset assertion:
 
-```systemverilog
+.. code-block:: verilog
 
-initial begin                     // Clock oscillator.
-  clk <= 0;                       // Time 0 nonblocking assignment.
-  forever #(`CYCLE/2) clk = ~clk;
-end
+  initial begin                     // Clock oscillator.
+    clk <= 0;                       // Time 0 nonblocking assignment.
+    forever #(`CYCLE/2) clk = ~clk;
+  end
+  
+  initial begin
+    rst_n <= 0;                     // Time 0 nonblocking assignment.
+    @(posedge clk);                 // Wait to get past time 0.
+    @(negedge clk) rst_n = 1;       // rst_n low for one clock cycle.
+  end
 
-initial begin
-  rst_n <= 0;                     // Time 0 nonblocking assignment.
-  @(posedge clk);                 // Wait to get past time 0.
-  @(negedge clk) rst_n = 1;       // rst_n low for one clock cycle.
-end
-
-```
 
 From: http://www.sunburst-design.com/papers/

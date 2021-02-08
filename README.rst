@@ -15,6 +15,11 @@ Documentation
 
 The user manual can be found at `florence-core.readthedocs.io <https://florence-core.readthedocs.io>`_.
 
+Simulation
+-------------------
+
+Content to come.
+
 Instruction cycle
 -----------------------
 

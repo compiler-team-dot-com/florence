@@ -1,20 +1,12 @@
-.. Florence Core documentation master file, created by
-   sphinx-quickstart on Tue Feb  9 06:33:22 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+Florence Core: An embedded 32 bit RISC-V CPU core
+=====================================================
 
-Welcome to Florence Core's documentation!
-=========================================
+Florence is an open-source 32 bit RISC-V CPU core written in the `Bluespec 
+SystemVerilog <https://github.com/B-Lang-org/Documentation>`_ language using 
+the `BSC compiler <https://github.com/B-Lang-org/bsc>`_.
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   decoder.rst

@@ -1,13 +1,9 @@
 # Florence Core
 
-**Reference implementations**
+Inspired by:
 
 * LC-3
 * https://github.com/lowRISC/ibex
-
-## Word size
-
-16 bits
 
 ## Data types
 
@@ -130,3 +126,42 @@ Not all instructions require all six phases.
 
 The ADD instruction can fetch its source operands, perform the "ADD" in the ALU,
 and store the result in the destination register all in a single clock cycle.
+
+# Guidelines and good coding habits
+
+* Guideline #1: When modeling sequential logic, use nonblocking assignments.
+* Guideline #2: When modeling latches, use nonblocking assignments.
+* Guideline #3: When modeling combinational logic with an always block, use
+  blocking assignments.
+* Guideline #4: When modeling both sequential and combinational logic within the
+  same always block, use nonblocking assignments.
+* Guideline #5: Do not mix blocking and nonblocking assignments in the same
+  always block.
+* Guideline #6: Do not make assignments to the same variable from more than one
+  always block.
+* Guideline #7: Use $strobe to display values that have been assigned using
+  nonblocking assignments.
+* Guideline #8: Do not make assignments using #0 delays
+
+From: http://www.sunburst-design.com/papers/
+
+## Test benches
+
+Good coding style for time-0 reset assertion:
+
+```systemverilog
+
+initial begin                     // Clock oscillator.
+  clk <= 0;                       // Time 0 nonblocking assignment.
+  forever #(`CYCLE/2) clk = ~clk;
+end
+
+initial begin
+  rst_n <= 0;                     // Time 0 nonblocking assignment.
+  @(posedge clk);                 // Wait to get past time 0.
+  @(negedge clk) rst_n = 1;       // rst_n low for one clock cycle.
+end
+
+```
+
+From: http://www.sunburst-design.com/papers/
